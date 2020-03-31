@@ -1,6 +1,6 @@
 import unittest
 import pytest
-from ProjectEuler import *
+from Project_Euler.ProjectEuler import *
 
 
 class TestProjectEuler(unittest.TestCase):
@@ -43,6 +43,15 @@ class TestProjectEuler(unittest.TestCase):
         n = 600851475143
         assert problem_3(n) == 6857
 
+    # Problem 4
+    def test_problem4_2(self):
+        n = 2
+        assert problem_4(n) == 9009
+
+    def test_problem4_3(self):
+        n = 3
+        assert problem_4(3) == 906609
+
     # Problem 5
 
     def test_problem5_10(self):
@@ -66,6 +75,15 @@ class TestProjectEuler(unittest.TestCase):
     def test_problem6_list(self):
         n = 100
         assert problem_6(n, 'list') == 25164150
+
+    # Problem 7
+    def test_problem7_6(self):
+        n = 6
+        assert problem_7(6) == 13
+
+    def test_problem_7_10000(self):
+        n = 10001
+        assert problem_7(n) == 104743
 
 
 if __name__ == '__main__':
