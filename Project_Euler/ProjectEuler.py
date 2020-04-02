@@ -2,6 +2,7 @@ import numpy as np
 from math import sqrt
 from itertools import compress
 from functools import reduce
+import operator
 
 
 def problem_1(n=1000, how='numpy'):
@@ -244,3 +245,15 @@ def problem_7(n=10001):
                 if num_count == n:
                     return start_val
             start_val += 2
+
+
+def problem_8(number="1234", n_digits=3):
+    max_prod = float('-inf')
+    if n_digits > len(number):
+        raise ValueError("Sliding window cannot be greater than size of data")
+    for i in range(len(number) - n_digits + 1):
+        within_prod = reduce(operator.mul, [int(num) for num in number[i: i+n_digits]], 1)
+        if within_prod > max_prod:
+            max_prod = within_prod
+    return max_prod
+
