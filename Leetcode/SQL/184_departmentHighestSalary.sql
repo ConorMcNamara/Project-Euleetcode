@@ -17,13 +17,21 @@ WHERE
 
 # Alternatively
 
-select d.name as department, c.name as employee, c.salary from
-(select a.salary, a.departmentid, b.name from (select max(salary) as salary, departmentid
-from employee
-group by departmentid) a
-inner join employee b
-on a.departmentid = b.departmentid
-and a.salary = b.salary) c
-inner join department d
-on c.departmentid = d.id
-group by salary, department, employee
+WITH rank_employee AS (
+SELECT
+    name,
+    salary,
+    RANK() OVER (PARTITION BY departmentId ORDER BY salary DESC) as sal_rank
+FROM employee
+)
+SELECT
+    department.name AS Department,
+    employee.name AS Employee,
+    employee.salary AS salary
+FROM employee
+JOIN department
+    ON employee.departmentId = department.id
+JOIN rank_employee
+    ON rank_employee.name = employee.name
+WHERE
+    sal_rank = 1
