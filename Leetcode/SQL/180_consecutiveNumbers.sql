@@ -1,12 +1,13 @@
-select distinct l1.num as consecutivenums
-from logs l1,
-logs l2,
-logs l3
-where
-l1.id = l2.id - 1
-and l2.id = l3.id - 1
-and l1.num = l2.num
-and l2.num = l3.num
+SELECT DISTINCT
+    log1.num AS ConsecutiveNums
+FROM 
+    logs log1
+JOIN logs log2
+    ON log1.id = log2.id + 1
+    AND log1.num = log2.num
+JOIN logs log3
+    ON log2.id = log3.id + 1
+    AND log2.num = log3.num
 
 # Alternatively
 
