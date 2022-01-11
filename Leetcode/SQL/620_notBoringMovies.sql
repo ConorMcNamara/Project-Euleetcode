@@ -1,4 +1,7 @@
-select * from cinema
-where description <> 'boring'
-and id % 2 = 1
-order by rating desc
+SELECT 
+    *
+FROM Cinema
+WHERE LOWER(description) <> 'boring'
+AND id % 2 = 1
+ORDER BY
+    rating DESC
