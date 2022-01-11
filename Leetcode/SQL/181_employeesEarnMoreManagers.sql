@@ -1,18 +1,19 @@
-select
-a.name as employee
-from
-employee a,
-employee b
-where
-a.managerid = b.id
-and a.salary > b.salary
+SELECT
+    employee.name AS Employee
+FROM employee
+JOIN employee manager
+ON employee.managerId = manager.id
+WHERE employee.salary > manager.salary
 
 # Alternatively
 
-select name as employee from (
-select e2.name, e1.salary as manager_salary, e2.salary as user_salary from
-employee e1
-left join employee e2
- on e1.id = e2.managerid
-    ) e3
-    where user_salary > manager_salary
+SELECT name AS employee FROM (
+    SELECT 
+         employee.name, 
+         manager.salary as manager_salary,
+         employee.salary as user_salary 
+    FROM employee manager
+    LEFT JOIN employee
+    ON manager.id = employee.managerid
+    ) employee_manager
+WHERE user_salary > manager_salary

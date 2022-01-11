@@ -1,13 +1,14 @@
-select
-case when (id % 2 = 1)
-    then
-    case when (id = (select max(id) from seat))
-               then id
-               else
-               id + 1
-               end
-    else id - 1
-    end as id,
+WITH swap AS (
+SELECT
+    CASE WHEN id % 2 = 1 THEN id + 1
+    ELSE id - 1 END AS id,
     student
-from seat
-order by id
+FROM seat
+)
+SELECT
+    seat.id,
+    COALESCE(swap.student, seat.student) as student
+FROM 
+    seat
+LEFT JOIN swap
+    ON seat.id = swap.id
