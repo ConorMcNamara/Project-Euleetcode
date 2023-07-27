@@ -1,6 +1,7 @@
 from collections import Counter
+from typing import List
 class Solution(object):
-    def singleNumber(self, nums):
+    def singleNumber(self, nums: List[int) -> List[int]:
         """
         :type nums: List[int]
         :rtype: int
