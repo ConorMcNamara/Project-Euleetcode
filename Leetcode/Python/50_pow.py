@@ -1,5 +1,5 @@
 class Solution(object):
-    def myPow(self, x, n):
+    def myPow(self, x: float, n: int) -> float:
         """
         :type x: float
         :type n: int
