@@ -1,5 +1,6 @@
+from typing import List
 class Solution(object):
-    def missingNumber(self, nums):
+    def missingNumber(self, nums: List[int]) -> int:
         """
         :type nums: List[int]
         :rtype: int
@@ -9,7 +10,7 @@ class Solution(object):
 
 # Alternatively
 class Solution(object):
-    def missingNumber(self, nums):
+    def missingNumber(self, nums: List[int]) -> int:
         """
         :type nums: List[int]
         :rtype: int
