@@ -7,5 +7,5 @@ def weakest_strong_link(strength):
             col.append(arr[min_row_index])
         max_col = max(col)
         if max_col == min_row:
-          return max_col
+            return max_col
     return -1

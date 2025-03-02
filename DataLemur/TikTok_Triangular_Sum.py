@@ -6,6 +6,6 @@ def triangular_sum(nums):
         n_iterations = num_len - 1
         new_nums = [0] * n_iterations
         for i in range(n_iterations):
-            new_nums[i] = (nums[i] + nums[i+1]) % 10
+            new_nums[i] = (nums[i] + nums[i + 1]) % 10
         nums = new_nums
         return triangular_sum(nums)
